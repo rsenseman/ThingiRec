@@ -12,6 +12,7 @@ def scrape_range(range_tup)
         if i%500 == 0:
             print i
             print "{} Records collected since last cache".format(len(pinshape_item_data))
+
             pinshape_item_data.to_csv('item_data_cache_{}.csv'.format(i), encoding = 'utf-8')
 
             del pinshape_item_data
@@ -36,7 +37,6 @@ def scrape_range(range_tup)
             pinshape_item_data = pinshape_item_data.append([[i, item_name, description, userid, username]])
 
         except:
-
             continue
 
     pinshape_item_data.to_csv('item_data_cache_{}.csv'.format('final'), encoding = 'utf-8')
