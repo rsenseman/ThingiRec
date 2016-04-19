@@ -2,9 +2,19 @@ import pandas as pd
 import requests
 from bs4 import BeautifulSoup
 import time
+import psycopg2
 
+def insert_into_database(data, connection, cursor):
 
-def scrape_range(range_tup, sleep_time):
+    SQL = "INSERT INTO test_item_table (item_id, item_name, description, username) \
+       VALUES (%s, %s, %s, %s);"
+
+    cursor.execute(SQL, data)
+    connection.commit()
+
+    return None
+
+def scrape_range(range_tup, sleep_time, db_connection, db_cursor):
 
     thingiverse_item_data = pd.DataFrame([['itemid','item_name','description','username']])
 
@@ -30,8 +40,6 @@ def scrape_range(range_tup, sleep_time):
             item_name = thing_name[0].text.split('by')[0].strip()
             username = thing_name[0].text.split('by')[1].split(',')[0][1:]
 
-            # thing_page = soup.select('div[id="thing-page"]')
-            # item_id = thing_page[0].attrs['data-thing-id']
             item_id = i
 
             description_object = soup.select('div[id="description"]')
@@ -41,11 +49,19 @@ def scrape_range(range_tup, sleep_time):
             print "{} collected: {}".format(i, item_name)
             thingiverse_item_data = thingiverse_item_data.append([[item_id, item_name, item_description, username]])
 
+            insert_into_database((item_id, item_name, item_description, username), db_connection, db_cursor)
+
         except:
             print "{} ...".format(i)
             continue
 
     thingiverse_item_data.to_csv('thingi_item_data_cache_{}.csv'.format('final'), encoding = 'utf-8')
 
+    return None
+
 if __name__ == '__main__':
-    scrape_range((0,100), 5)
+    conn = psycopg2.connect(dbname='thingiscrape', user='ec2-user', host='/tmp')
+
+    scrape_range((0,20000), 5, conn)
+
+    conn.close()
