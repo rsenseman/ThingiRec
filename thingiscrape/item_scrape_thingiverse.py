@@ -68,9 +68,9 @@ def scrape_range(range_tup, sleep_time, db_connection, db_cursor):
     return None
 
 if __name__ == '__main__':
-    conn = psycopg2.connect(dbname='thingiscrape', user='ec2-user', host='/tmp')
+    conn = psycopg2.connect(dbname='thingiscrape', user='robert', host='/tmp')
     c = conn.cursor()
 
-    scrape_range((0,1506586), .5, conn, c)
+    scrape_range((4433,1506586), 2, conn, c)
 
     conn.close()

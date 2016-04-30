@@ -1,0 +1,10 @@
+<h1>ThingiRec</h1>
+
+{% block content %}
+<h3>ThingiSearch uses content-based filtering to recommend users and parts that may interest you based on your part uploads. Enter your username to see your recommendations!
+{% endblock %}
+
+<form action="/recommend" method='POST' >
+<input type="text" name="user_input" />
+<input type="submit" />
+</form>

@@ -1,0 +1,20 @@
+{% extends "home.html" %}
+
+{% block content %}
+<h4>Recommended Users:</h4>
+<ol>
+  {% for x in users %}
+    <li><a href="http://www.thingiverse.com/{{ x }}/designs">User {{ x }}</a></li>
+  {% endfor %}
+</ol>
+
+
+<h4>Recommended Parts:</h4>
+<ol>
+  {% for x in parts %}
+    <li><a href="http://www.thingiverse.com/thing:{{ x }}">Thing {{ x }}</a></li>
+  {% endfor %}
+</ol>
+
+<h4>Search for another user to get EVEN MORE SUGGESTIONS!</h4>
+{% endblock %}
