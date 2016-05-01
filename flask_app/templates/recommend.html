@@ -11,6 +11,14 @@
 <h4>Recommended Parts:</h4>
 <ul id="parts" style="list-style-type:none; font: 300 24px/1.1 'Open Sans','HelveticaNeue', Helvetica, Arial, sans-serif;" class="list-inline text-center">
   <li>
+    <ul style="list-style-type:none">
+      {% for x in part_numbers %}
+        <li><a href="http://www.thingiverse.com/thing:{{ x }}">Link</a></li>
+      {% endfor %}
+    </ul>
+  </li>
+
+  <li>
     <ul style="list-style-type:none" align="left">
       {% for x in part_names %}
         <li>{{ x }}</li>
@@ -18,13 +26,6 @@
     </ul>
   </li>
 
-  <li>
-    <ul style="list-style-type:none">
-      {% for x in part_numbers %}
-        <li><a href="http://www.thingiverse.com/thing:{{ x }}">Link</a></li>
-      {% endfor %}
-    </ul>
-  </li>
 </ul>
 <hr>
 <h4>Search for another user to get EVEN MORE SUGGESTIONS!</h4>
