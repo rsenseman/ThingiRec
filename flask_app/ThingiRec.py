@@ -16,10 +16,16 @@ def get_top_users_and_parts(user_ind, username):
     # X_user_removed = np.delete(X, user_ind, axis = 0)
     n_items = 5
 
+    base_ids = full_df.iloc[user_ind]['item_id']
+        
+    # limit number of parts to be used for similarity analysis
+    num_user_parts = min(20,len(user_ind))
+    user_ind=np.random.choice(user_ind,(num_user_parts,))
+
     while True:
         similar_users = []
         similar_parts = []
-
+        
         for i in user_ind:
             # base_item = vec_X[i].reshape(1, -1)
             base_item_id = full_df.iloc[i]['item_id']
@@ -32,18 +38,17 @@ def get_top_users_and_parts(user_ind, username):
             similar_users.extend(list(similar_items['username']))
             similar_parts.extend(list(similar_items['item_id']))
 
-            if base_item_id in similar_parts:
-                similar_parts.remove(base_item_id)
-
         similar_users_set = set(similar_users)
         similar_parts_set = set(similar_parts)
 
         similar_users_set.discard(username)
+        for item_id in base_ids:
+            similar_parts_set.discard(item_id)
 
         if len(similar_users_set) >= 5:
             break
         else:
-            n_items += 1
+            n_items += 2
 
     top_similar_users = sorted(similar_users_set, key = lambda x: similar_users.count(x), reverse = True)[:5]
 
@@ -77,10 +82,6 @@ def recommend():
     # if the username is found, get recommendations
     # otherwise, reroute user to try again
     if user_ind.any():
-        # limit number of parts to be used for similarity analysis
-        num_user_parts = min(20,len(user_ind))
-        user_ind=np.random.choice(user_ind,(num_user_parts,))
-
         users, part_numbers, part_names = get_top_users_and_parts(user_ind, username)
         rec_end = time.time()
         print "time to recommend: {}".format(rec_end-rec_start)
