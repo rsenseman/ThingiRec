@@ -11,13 +11,18 @@ app = Flask(__name__)
 full_df = None
 vec_X = None
 
+def get_default_top_users_and_parts():
+    users = full_df['username'].unique()[-5:]
+    recent_parts = full_df.sort('item_id', axis=0)[-5:]
+    part_ids = recent_parts['item_id']
+    part_names = recent_parts['item_name']
+    return users, part_ids, part_names
+
 def get_top_users_and_parts(user_ind, username):
-    # df_user_removed = df.drop(user_ind, axis = 0, inplace = False)
-    # X_user_removed = np.delete(X, user_ind, axis = 0)
     n_items = 5
 
     base_ids = full_df.iloc[user_ind]['item_id']
-        
+
     # limit number of parts to be used for similarity analysis
     num_user_parts = min(20,len(user_ind))
     user_ind=np.random.choice(user_ind,(num_user_parts,))
@@ -25,12 +30,8 @@ def get_top_users_and_parts(user_ind, username):
     while True:
         similar_users = []
         similar_parts = []
-        
+
         for i in user_ind:
-            # base_item = vec_X[i].reshape(1, -1)
-            base_item_id = full_df.iloc[i]['item_id']
-            # distances_vector = np.apply_along_axis(lambda x: cosine(x,base_item), 1, vec_X)
-            # distances_vector = linear_kernel(base_item, vec_X)
             distances_vector = linear_kernel(vec_X[i:i+1], vec_X).flatten()
             similar_indices = np.argsort(distances_vector)[::-1]
             similar_items = full_df.iloc[np.ravel(similar_indices[:n_items])]
@@ -57,9 +58,7 @@ def get_top_users_and_parts(user_ind, username):
     part_names = similar_parts_df['item_name']
     part_ids = part_names.keys()
 
-    # limit length of part names
-    max_len = 15
-
+    max_len = 15 # limit length of part names for display in app
     part_names = map(lambda x: x[:max_len+1]+'...' if len(x) > max_len else x,part_names)
 
     return top_similar_users, part_ids, part_names
@@ -87,8 +86,9 @@ def recommend():
         print "time to recommend: {}".format(rec_end-rec_start)
         return render_template('recommend.html', users=users, part_numbers=part_numbers, part_names=part_names)
     else:
-        print "empty dataframe"
-        return render_template('try_again.html', username=username)
+        print "no user data"
+        users, part_numbers, part_names = get_default_top_users_and_parts()
+        return render_template('recommend_def.html', users=users, part_numbers=part_numbers, part_names=part_names)
 
 @app.route('/contact')
 def contact():

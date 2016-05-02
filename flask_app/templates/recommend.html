@@ -1,6 +1,10 @@
 {% extends "home.html" %}
 
 {% block recs %}
+
+{% block notice %}
+{% endblock %}
+
 <h4 style="text-align:center">Recommended Users:</h4>
 <ul style="list-style-type:none; font: 300 24px/1.1 'Open Sans','HelveticaNeue', Helvetica, Arial, sans-serif;">
   {% for x in users %}
