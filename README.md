@@ -1,6 +1,5 @@
 # ThingiRec by Robert Senseman
-Content-Based Recommendation System for thingiverse.com Users
--------------
+###### Content-Based Recommendation System for thingiverse.com Users
 ***
 Overview
 -------
