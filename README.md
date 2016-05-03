@@ -1,4 +1,4 @@
-# ThingiRec by Robert Senseman
+# ThingiRec by Robert Senseman  
 ##### Content-Based Recommendation System for thingiverse.com Users
 ***
 Overview
