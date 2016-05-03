@@ -1,33 +1,30 @@
-# ThingiRec by Robert Senseman  
-##### Content-Based Recommendation System for thingiverse.com Users
-***
-Overview
--------
-ThingiRec uses user data from [thingiverse.com](http://www.thingiverse.com) to recommend to users other users with whom they should connect and parts that they may be interested in building. [Thingiverse.com](http://www.thingiverse.com) is a 3D printing hobbyist website where users share their 3D-printed creations. User recommendations are made by *content-based filtering*, using the similarity of parts that the user of interest created and parts created by other users of the site. Maybe the folks at thingiverse.com will put this feature on the front page of their site soon; for now, the app can be used at [ThingiRec.xyz](http://www.thingirec.xyz)
+# ThingiRec
+ThingiRec is a content-Based recommendation system for thingiverse.com users. The web app can be accessed [here](http://www.thingirec.xyz).
 
-The Process
-------
+## Overview
+ThingiRec uses user data from [thingiverse.com](http://www.thingiverse.com) to recommend to users other users with whom they should connect and parts that they may be interested in building. [Thingiverse.com](http://www.thingiverse.com) is a 3D printing hobbyist website where users share their 3D-printed creations. User recommendations are made by *content-based filtering*; cosine similarity is calculated between each of the user's parts and all other parts in the database for comparison. After the most similar items are found, the associated users are recommended to the input user.  
+
+The goal in using content-based filtering is to connect users based on printing complications they might have. For example, User A who is interested in [ornate iphone cases](http://www.thingiverse.com/thing:65810) and User B who is interested in [automotive transmissions](http://www.thingiverse.com/thing:34778) may not connect based on their outwardly stated interests, but they are both interested in functional gears. Content-based filtering may match them.
+
+## The Process
 The overall process of the project can be broken down into 4 steps. These steps will be detailed below:
 1. Data Collection
-2. Data Manipulation
-3. App Creation/Code Refactoring
-4. App Deployment
+2. Data Transformation
+3. Model Creation/Code Refactoring
+4. App Creation and Deployment
 
 ##### 1) Data Collection
+Items uploaded to thingiverse.com have a maximum item id of ~1500000, representing ~1.5 million items that have been uploaded to the site. All potential item pages were inspected and ~500,000 records were yielded from the scraping. Many items have been deleted or hidden from the site since it's inception. The item id, name, description, and associated username from each page was stored in a PostgreSQL database.  
 
-An in-depth explanation of your process
-What algorithms and techniques did you use?
-How did you validate your results?
-What interesting insights did you gain?
+The script used for scraping is [/thingiscrape/item_scrape_thingiverse.py](https://github.com/rsenseman/ThingiRec/blob/master/thingiscrape/item_scrape_thingiverse.py). In practice, this scraping was parallelized over 3 AWS instances to speed the collection.
 
+##### 2) Data Transformation
+Upon launch of [the web app](https://github.com/rsenseman/ThingiRec/tree/master/flask_app), all of the part names and descriptions are vectorized by the [sklearn TfidfVectorizer](http://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.html). The number of features was limited to 1000 to increase the speed of recommendation.
 
+##### 3) Model Creation/Code Refactoring
+When a username is entered, cosine similarity is calculated between each of the user's parts and all other parts in the database. From the most similar parts, the related usernames are taken and are recommended for connection  
 
-Code walk-through
-Give an overview of what each section of your code does.
-Make it clear to the reader of your repo how they should navigate your code.
-If you have a particular bit of code you think is clever or where the meat of your work is, make sure to point it out. If you tell them what to look at, they will listen.
+The most challenging aspect of the project was creating recommendations in both a memory and time efficient manner. Through many iterations of code refactoring, the memory required for recommendations was reduced from <64 GB to <16 GB and the time requirement of a baseline recommendation was reduced from 20 minutes to 7 seconds.
 
-
-
-How to run on my own
-Give instructions for how to run your code on their computer (e.g. Run python scraper.py to collect the data, then run...)
+##### 4) App Creation and Deployment
+[The web app](https://github.com/rsenseman/ThingiRec/tree/master/flask_app) is written in Python using the Flask framework and is designed with a [Start Bootstrap](http://startbootstrap.com/) theme. The app is hosted on AWS.
