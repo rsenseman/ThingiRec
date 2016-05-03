@@ -1,17 +1,17 @@
 # ThingiRec
-ThingiRec is a content-Based recommendation system for thingiverse.com users. The web app can be accessed [here](http://www.thingirec.xyz).
+ThingiRec is a content-based recommendation system for thingiverse.com users. The web app can be accessed [here](http://www.thingirec.xyz).
 
 ## Overview
-ThingiRec uses user data from [thingiverse.com](http://www.thingiverse.com) to recommend to users other users with whom they should connect and parts that they may be interested in building. [Thingiverse.com](http://www.thingiverse.com) is a 3D printing hobbyist website where users share their 3D-printed creations. User recommendations are made by *content-based filtering*; cosine similarity is calculated between each of the user's parts and all other parts in the database for comparison. After the most similar items are found, the associated users are recommended to the input user.  
+ThingiRec uses item data from [thingiverse.com](http://www.thingiverse.com) to recommend to users other users with whom they should connect and parts that they may be interested in building. [Thingiverse.com](http://www.thingiverse.com) is a 3D printing hobbyist website where users share their 3D-printed creations. User recommendations are made by *content-based filtering*; cosine similarity is calculated between each of the user's parts and all other parts in the database for comparison. After the most similar items are found, the associated users are recommended to the input user.  
 
 The goal in using content-based filtering is to connect users based on printing complications they might have. For example, User A who is interested in [ornate iphone cases](http://www.thingiverse.com/thing:65810) and User B who is interested in [automotive transmissions](http://www.thingiverse.com/thing:34778) may not connect based on their outwardly stated interests, but they are both interested in functional gears. Content-based filtering may match them.
 
 ## The Process
-The overall process of the project can be broken down into 4 steps. These steps will be detailed below:
-1. Data Collection
-2. Data Transformation
-3. Model Creation/Code Refactoring
-4. App Creation and Deployment
+The overall process of the project can be broken down into 4 steps. These steps will be detailed below:  
+1. Data Collection  
+2. Data Transformation  
+3. Model Creation/Code Refactoring  
+4. App Creation and Deployment  
 
 ##### 1) Data Collection
 Items uploaded to thingiverse.com have a maximum item id of ~1500000, representing ~1.5 million items that have been uploaded to the site. All potential item pages were inspected and ~500,000 records were yielded from the scraping. Many items have been deleted or hidden from the site since it's inception. The item id, name, description, and associated username from each page was stored in a PostgreSQL database.  
