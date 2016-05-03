@@ -1,5 +1,5 @@
 # ThingiRec by Robert Senseman
-###### Content-Based Recommendation System for thingiverse.com Users
+##### Content-Based Recommendation System for thingiverse.com Users
 ***
 Overview
 -------
@@ -13,7 +13,7 @@ The overall process of the project can be broken down into 4 steps. These steps 
 3. App Creation/Code Refactoring
 4. App Deployment
 
-###### 1) Data Collection
+##### 1) Data Collection
 
 An in-depth explanation of your process
 What algorithms and techniques did you use?
