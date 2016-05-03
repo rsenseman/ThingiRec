@@ -1,1 +1,2 @@
-# user_recommender_3d
+# ThingiRec
+### Content-Based Recommendation System for thingiverse.com Users
