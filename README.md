@@ -33,4 +33,4 @@ The most challenging aspect of the project was creating recommendations in both 
 ##### 4) App Creation and Deployment
 [The web app](https://github.com/rsenseman/ThingiRec/tree/master/flask_app) is written in Python using the Flask framework and is designed with a [Start Bootstrap](http://startbootstrap.com/) theme. The app is hosted on AWS.  
 
-![The App, Live!](/readme_files/app_screenshot.png)
+![The App, Live!](/readme_files/app_screenshot2.png)
