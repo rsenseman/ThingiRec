@@ -10,12 +10,6 @@ Iphone Case             |  Automotive Transmission
 :-------------------------:|:-------------------------:
 ![](/readme_files/iphone_case.jpg)  |  ![](/readme_files/transmission.jpg)
 
-<div class="bottom">
-<div style="float:left;width:50%;"><h5>Iphone Case</h5><img src="/readme_files/iphone_case.jpg" style="height: 100px"></div>
-
-<div style="float:right;width:50%;"><h5>Automotive Transmission</h5><img src="/readme_files/transmission.jpg" style="height: 100px"></div>
-</div>
-
 ## The Process
 The overall process of the project can be broken down into 4 steps. These steps will be detailed below:  
 1. Data Collection  
