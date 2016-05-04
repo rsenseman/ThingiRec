@@ -8,7 +8,7 @@ The goal in using content-based filtering is to connect users based on printing 
 
 [User A's Iphone Case](http://www.thingiverse.com/thing:65810)             |  [User B's Automotive Transmission](http://www.thingiverse.com/thing:34778)
 :-------------------------:|:-------------------------:
-![](/readme_files/iphone_case.jpg)  |  ![](/readme_files/transmission.jpg)
+![iphone_case](/readme_files/iphone_case.jpg)  |  ![transmission](/readme_files/transmission.jpg)
 
 ## The Process
 The overall process of the project can be broken down into 4 steps. These steps will be detailed below:  
@@ -31,4 +31,6 @@ When a username is entered, cosine similarity is calculated between each of the 
 The most challenging aspect of the project was creating recommendations in both a memory and time efficient manner. Through many iterations of code refactoring, the memory required for recommendations was reduced from <64 GB to <16 GB and the time requirement of a baseline recommendation was reduced from 20 minutes to 7 seconds.
 
 ##### 4) App Creation and Deployment
-[The web app](https://github.com/rsenseman/ThingiRec/tree/master/flask_app) is written in Python using the Flask framework and is designed with a [Start Bootstrap](http://startbootstrap.com/) theme. The app is hosted on AWS.
+[The web app](https://github.com/rsenseman/ThingiRec/tree/master/flask_app) is written in Python using the Flask framework and is designed with a [Start Bootstrap](http://startbootstrap.com/) theme. The app is hosted on AWS.  
+
+![The App, Live!](/readme_files/app_screenshot.jpg)
