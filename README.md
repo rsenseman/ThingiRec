@@ -6,7 +6,7 @@ ThingiRec uses item data from [thingiverse.com](http://www.thingiverse.com) to r
 
 The goal in using content-based filtering is to connect users based on printing complications they might have. For example, User A who is interested in [ornate iphone cases](http://www.thingiverse.com/thing:65810) and User B who is interested in [automotive transmissions](http://www.thingiverse.com/thing:34778) may not connect based on their outwardly stated interests, but they are both interested in functional gears. Content-based filtering may match them.
 
-Iphone Case             |  Automotive Transmission
+[User A's Iphone Case](http://www.thingiverse.com/thing:65810)             |  [User B's Automotive Transmission](http://www.thingiverse.com/thing:34778)
 :-------------------------:|:-------------------------:
 ![](/readme_files/iphone_case.jpg)  |  ![](/readme_files/transmission.jpg)
 
