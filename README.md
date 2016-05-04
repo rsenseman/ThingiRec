@@ -5,10 +5,15 @@ ThingiRec is a content-based recommendation system for thingiverse.com users. Th
 ThingiRec uses item data from [thingiverse.com](http://www.thingiverse.com) to recommend to users other users with whom they should connect and parts that they may be interested in building. [Thingiverse.com](http://www.thingiverse.com) is a 3D printing hobbyist website where users share their 3D-printed creations. User recommendations are made by *content-based filtering*; cosine similarity is calculated between each of the user's parts and all other parts in the database for comparison. After the most similar items are found, the associated users are recommended to the input user.  
 
 The goal in using content-based filtering is to connect users based on printing complications they might have. For example, User A who is interested in [ornate iphone cases](http://www.thingiverse.com/thing:65810) and User B who is interested in [automotive transmissions](http://www.thingiverse.com/thing:34778) may not connect based on their outwardly stated interests, but they are both interested in functional gears. Content-based filtering may match them.
-<div class="bottom">
-<div style="float:left;width:50%;"><h5>Iphone Case</h5><img src="/readme_files/iphone_case.jpg" style="height: 20px"></div>
 
-<div style="float:right;width:50%;"><h5>Iphone Case</h5><img src="/readme_files/transmission.jpg" style="height: 20px"></div>
+Iphone Case             |  Automotive Transmission
+:-------------------------:|:-------------------------:
+![](/readme_files/iphone_case.jpg)  |  ![](/readme_files/transmission.jpg)
+
+<div class="bottom">
+<div style="float:left;width:50%;"><h5>Iphone Case</h5><img src="/readme_files/iphone_case.jpg" style="height: 100px"></div>
+
+<div style="float:right;width:50%;"><h5>Automotive Transmission</h5><img src="/readme_files/transmission.jpg" style="height: 100px"></div>
 </div>
 
 ## The Process
