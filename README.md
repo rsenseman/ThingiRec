@@ -6,6 +6,8 @@ ThingiRec uses item data from [thingiverse.com](http://www.thingiverse.com) to r
 
 The goal in using content-based filtering is to connect users based on printing complications they might have. For example, User A who is interested in [ornate iphone cases](http://www.thingiverse.com/thing:65810) and User B who is interested in [automotive transmissions](http://www.thingiverse.com/thing:34778) may not connect based on their outwardly stated interests, but they are both interested in functional gears. Content-based filtering may match them.
 
+![iphone case](/iphone_case.jpg)
+
 ## The Process
 The overall process of the project can be broken down into 4 steps. These steps will be detailed below:  
 1. Data Collection  
