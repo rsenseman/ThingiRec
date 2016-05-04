@@ -18,7 +18,7 @@ The overall process of the project can be broken down into 4 steps. These steps 
 4. App Creation and Deployment  
 
 ##### 1) Data Collection
-Items uploaded to thingiverse.com have a maximum item id of ~1500000, representing ~1.5 million items that have been uploaded to the site. All potential item pages were inspected and ~500,000 records were yielded from the scraping. Many items have been deleted or hidden from the site since it's inception. The item id, name, description, and associated username from each page was stored in a PostgreSQL database.  
+Items uploaded to thingiverse.com have a maximum item id of ~1,500,000, representing ~1.5 million items that have been uploaded to the site. All potential item pages were inspected and ~500,000 records were yielded from the scraping. Many items have been deleted or hidden from the site since it's inception. The item id, name, description, and associated username from each page was stored in a PostgreSQL database.  
 
 The script used for scraping is [/thingiscrape/item_scrape_thingiverse.py](https://github.com/rsenseman/ThingiRec/blob/master/thingiscrape/item_scrape_thingiverse.py). In practice, this scraping was parallelized over 3 AWS instances to speed the collection.
 
