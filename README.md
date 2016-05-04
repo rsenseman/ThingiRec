@@ -8,7 +8,7 @@ The goal in using content-based filtering is to connect users based on printing 
 <div class="bottom">
 <div style="float:left;width:50%;"><h5>Iphone Case</h5><img src="/readme_files/iphone_case.jpg" style="height: 20px"></div>
 
-<div style="float:left;width:50%;"><h5>Iphone Case</h5><img src="/readme_files/transmission.jpg" style="height: 20px"></div>
+<div style="float:right;width:50%;"><h5>Iphone Case</h5><img src="/readme_files/transmission.jpg" style="height: 20px"></div>
 </div>
 
 ## The Process
